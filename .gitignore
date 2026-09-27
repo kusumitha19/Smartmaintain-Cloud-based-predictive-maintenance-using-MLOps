@@ -1,0 +1,30 @@
+# Python
+venv/
+my_venv/
+.env
+__pycache__/
+*.py[cod]
+
+# Project generated artifacts
+Artifacts/
+logs/
+
+# MLflow local tracking
+mlruns/
+
+# Raw datasets
+data/CMAPSS/
+
+# Experiment/generated staging
+experiment_staging/
+
+# Experimental model files
+final_model/model_lstm_no_constant_features.keras
+final_model/model_lstm_uncapped.keras
+final_model/model_lstm_window20.keras
+final_model/preprocessing_lstm_no_constant_features.pkl
+final_model/preprocessing_lstm_uncapped.pkl
+final_model/preprocessing_lstm_window20.pkl
+
+# Windows metadata
+*:Zone.Identifier

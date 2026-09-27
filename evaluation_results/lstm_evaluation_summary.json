@@ -1,0 +1,104 @@
+{
+  "mae": 11.307566924095154,
+  "rmse": 14.743577740246103,
+  "r2": 0.8741230463593311,
+  "mean_error": -0.3764432096481323,
+  "median_absolute_error": 8.253788948059082,
+  "maximum_absolute_error": 34.97289276123047,
+  "minimum_absolute_error": 0.07024383544921875,
+  "absolute_error_le_5": 35,
+  "absolute_error_le_10": 59,
+  "absolute_error_le_20": 79,
+  "absolute_error_gt_20": 21,
+  "minimum_predicted_rul": 7.407211780548096,
+  "maximum_predicted_rul": 120.35680389404297,
+  "mean_predicted_rul": 75.1435546875,
+  "number_of_engines": 100,
+  "bias_interpretation": "underprediction",
+  "smallest_absolute_error_engine": {
+    "unit_id": 8,
+    "actual_RUL": 95.0,
+    "predicted_RUL": 94.92975616455078,
+    "absolute_error": 0.07024383544921875,
+    "signed_error": -0.07024383544921875
+  },
+  "largest_absolute_error_engine": {
+    "unit_id": 21,
+    "actual_RUL": 57.0,
+    "predicted_RUL": 91.97289276123047,
+    "absolute_error": 34.97289276123047,
+    "signed_error": 34.97289276123047
+  },
+  "top_10_largest_absolute_error_engines": [
+    {
+      "unit_id": 21,
+      "actual_RUL": 57.0,
+      "predicted_RUL": 91.97289276123047,
+      "absolute_error": 34.97289276123047,
+      "signed_error": 34.97289276123047
+    },
+    {
+      "unit_id": 25,
+      "actual_RUL": 145.0,
+      "predicted_RUL": 110.978759765625,
+      "absolute_error": 34.021240234375,
+      "signed_error": -34.021240234375
+    },
+    {
+      "unit_id": 93,
+      "actual_RUL": 85.0,
+      "predicted_RUL": 51.77452087402344,
+      "absolute_error": 33.22547912597656,
+      "signed_error": -33.22547912597656
+    },
+    {
+      "unit_id": 45,
+      "actual_RUL": 114.0,
+      "predicted_RUL": 81.91596221923828,
+      "absolute_error": 32.08403778076172,
+      "signed_error": -32.08403778076172
+    },
+    {
+      "unit_id": 96,
+      "actual_RUL": 137.0,
+      "predicted_RUL": 106.2171859741211,
+      "absolute_error": 30.782814025878906,
+      "signed_error": -30.782814025878906
+    },
+    {
+      "unit_id": 89,
+      "actual_RUL": 136.0,
+      "predicted_RUL": 107.25540924072266,
+      "absolute_error": 28.744590759277344,
+      "signed_error": -28.744590759277344
+    },
+    {
+      "unit_id": 79,
+      "actual_RUL": 63.0,
+      "predicted_RUL": 90.85773468017578,
+      "absolute_error": 27.85773468017578,
+      "signed_error": 27.85773468017578
+    },
+    {
+      "unit_id": 55,
+      "actual_RUL": 137.0,
+      "predicted_RUL": 109.56661224365234,
+      "absolute_error": 27.433387756347656,
+      "signed_error": -27.433387756347656
+    },
+    {
+      "unit_id": 73,
+      "actual_RUL": 131.0,
+      "predicted_RUL": 104.50801849365234,
+      "absolute_error": 26.491981506347656,
+      "signed_error": -26.491981506347656
+    },
+    {
+      "unit_id": 67,
+      "actual_RUL": 77.0,
+      "predicted_RUL": 102.58834075927734,
+      "absolute_error": 25.588340759277344,
+      "signed_error": 25.588340759277344
+    }
+  ]
+}

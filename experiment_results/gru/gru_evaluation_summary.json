@@ -1,0 +1,32 @@
+{
+  "experiment": "GRU_FD001_cap125_window30_25features",
+  "model_type": "GRU",
+  "dataset": "C-MAPSS FD001",
+  "rul_cap": 125,
+  "window_size": 30,
+  "feature_count": 25,
+  "training_sequence_count": 17731,
+  "test_sequence_shape": [
+    100,
+    30,
+    25
+  ],
+  "test_engine_count": 100,
+  "epochs_completed": 20,
+  "train_metrics": {
+    "mae": 10.308801651000977,
+    "rmse": 14.106387137784596,
+    "r2": 0.8861115574836731
+  },
+  "test_metrics": {
+    "mae": 11.753653526306152,
+    "rmse": 16.559836349784398,
+    "r2": 0.8411992788314819
+  },
+  "mlflow_experiment": "SMARTMAINTAIN_GRU_FD001",
+  "mlflow_run_id": "e5855d626e384bbe91bf557f598e7d39",
+  "production_lstm_model_sha256_before": "cea8b4d7257f3ee77cd275e7da7083b058e5d8a37409e374bd049c57c8f0ef97",
+  "production_lstm_model_sha256_after": "cea8b4d7257f3ee77cd275e7da7083b058e5d8a37409e374bd049c57c8f0ef97",
+  "production_scaler_sha256_before": "43979efd4850bf7ec31ecd0e0e1261013cb4f1d3baa61b6f1b7d25297ea047ae",
+  "production_scaler_sha256_after": "43979efd4850bf7ec31ecd0e0e1261013cb4f1d3baa61b6f1b7d25297ea047ae"
+}

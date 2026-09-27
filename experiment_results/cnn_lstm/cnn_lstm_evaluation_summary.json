@@ -1,0 +1,32 @@
+{
+  "experiment": "CNN_LSTM_FD001_cap125_window30_25features",
+  "model_type": "CNN-LSTM",
+  "dataset": "C-MAPSS FD001",
+  "rul_cap": 125,
+  "window_size": 30,
+  "feature_count": 25,
+  "training_sequence_count": 17731,
+  "test_sequence_shape": [
+    100,
+    30,
+    25
+  ],
+  "test_engine_count": 100,
+  "epochs_completed": 10,
+  "train_metrics": {
+    "mae": 7.2377519607543945,
+    "rmse": 10.640462238338511,
+    "r2": 0.9352008700370789
+  },
+  "test_metrics": {
+    "mae": 12.243369102478027,
+    "rmse": 17.050260856176713,
+    "r2": 0.8316541314125061
+  },
+  "mlflow_experiment": "SMARTMAINTAIN_CNN_LSTM_FD001",
+  "mlflow_run_id": "c4a26e9bb2e0429587c3d3ca0da93996",
+  "production_lstm_model_sha256_before": "cea8b4d7257f3ee77cd275e7da7083b058e5d8a37409e374bd049c57c8f0ef97",
+  "production_lstm_model_sha256_after": "cea8b4d7257f3ee77cd275e7da7083b058e5d8a37409e374bd049c57c8f0ef97",
+  "production_scaler_sha256_before": "43979efd4850bf7ec31ecd0e0e1261013cb4f1d3baa61b6f1b7d25297ea047ae",
+  "production_scaler_sha256_after": "43979efd4850bf7ec31ecd0e0e1261013cb4f1d3baa61b6f1b7d25297ea047ae"
+}

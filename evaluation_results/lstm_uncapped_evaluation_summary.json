@@ -1,0 +1,34 @@
+{
+  "experiment": "uncapped_rul",
+  "artifact_directory": "Artifacts\\09_22_2026_20_20_32",
+  "trained_model_artifact_path": "Artifacts\\09_22_2026_20_20_32\\model_trainer\\trained_model\\model.keras",
+  "experiment_model_path": "final_model\\model_lstm_uncapped.keras",
+  "experiment_scaler_path": "final_model\\preprocessing_lstm_uncapped.pkl",
+  "training_epochs_completed": 9,
+  "best_validation_epoch": 4,
+  "final_epoch_training_loss": 337.49139404296875,
+  "final_epoch_training_mae": 12.449803352355957,
+  "final_epoch_validation_loss": 2434.728271484375,
+  "final_epoch_validation_mae": 30.10556411743164,
+  "train_metrics": {
+    "mae": 18.278200149536133,
+    "rmse": 29.075958745209505,
+    "r2": 0.7795079946517944
+  },
+  "test_metrics": {
+    "mae": 18.30684781074524,
+    "rmse": 25.311871022389216,
+    "r2": 0.6289871483903202,
+    "mean_error": 6.9427743244171145,
+    "median_absolute_error": 12.17853832244873,
+    "maximum_absolute_error": 90.46408081054688,
+    "minimum_absolute_error": 0.006443023681640625,
+    "absolute_error_le_5": 27,
+    "absolute_error_le_10": 46,
+    "absolute_error_le_20": 64,
+    "absolute_error_gt_20": 36
+  },
+  "mlflow_run_id": "90653aeea44446ab81cc1ec676a6bbab",
+  "number_of_test_predictions": 100,
+  "predictions_all_finite": true
+}

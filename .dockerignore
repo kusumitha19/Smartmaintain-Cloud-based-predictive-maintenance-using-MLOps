@@ -1,0 +1,35 @@
+# Version control and local environments
+.git/
+.gitignore
+.venv/
+venv/
+env/
+.env
+
+# Python caches and test/tool caches
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.coverage
+
+# Generated pipeline, tracking, and experiment outputs
+Artifacts/
+logs/
+mlruns/
+experiment_staging/
+experiment_results/
+evaluation_results/
+
+# Development-only material and source datasets
+notebooks/
+assets/
+data/CMAPSS/
+*.ipynb
+
+# Legacy generated data and prediction outputs
+prediction_output/
+valid_data/
+Machine_Predictive_Data/
