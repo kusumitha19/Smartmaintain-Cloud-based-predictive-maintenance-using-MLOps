@@ -31,3 +31,5 @@ final_model/preprocessing_lstm_window20.pkl
 # Local MLflow environment and logs
 .venv-mlflow/
 mlflow-ui.log
+
+docker_build.log
