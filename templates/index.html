@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMARTMAINTAIN - RUL Prediction</title>
+    <style>
+        :root {
+            --bg: #f5f5f5;
+            --panel: #ffffff;
+            --border: #d1d5db;
+            --text: #111827;
+            --muted: #4b5563;
+            --heading: #111827;
+            --button: #111827;
+            --button-text: #ffffff;
+            --result-bg: #f9fafb;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 620px;
+            margin: 0 auto;
+            padding: 48px 20px 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--heading);
+        }
+
+        .description {
+            margin: 12px auto 0;
+            max-width: 540px;
+            color: var(--muted);
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            padding: 24px 22px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--heading);
+        }
+
+        .engine-input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            background: #fff;
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            margin-top: 8px;
+        }
+
+        .predict-btn {
+            background: var(--button);
+            color: var(--button-text);
+            border: 1px solid var(--button);
+            padding: 12px 22px;
+            font-size: 0.98rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .result-box {
+            margin-top: 24px;
+            border: 1px solid var(--border);
+            background: var(--result-bg);
+            padding: 18px 16px;
+        }
+
+        .result-title {
+            margin: 0 0 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .result-table {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size: 0.98rem;
+            color: var(--text);
+        }
+
+        .result-table li {
+            margin: 8px 0;
+        }
+
+        .message {
+            margin-top: 16px;
+            min-height: 48px;
+            padding: 12px 14px;
+            background: #f9fafb;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .message.error {
+            color: #991b1b;
+        }
+
+        .message.success {
+            color: #065f46;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .panel {
+                padding: 18px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>SMARTMAINTAIN - RUL Prediction</h1>
+            <p class="description">Enter an Engine ID to predict its Remaining Useful Life.</p>
+        </header>
+
+        <main class="panel">
+            <div class="form-group">
+                <label class="label" for="engineId">Engine ID</label>
+                <input id="engineId" class="engine-input" type="number" min="1" step="1" placeholder="Enter engine ID" />
+            </div>
+
+            <div class="button-row">
+                <button id="predictBtn" class="predict-btn" type="button">Predict RUL</button>
+            </div>
+
+            <div class="result-box" aria-live="polite">
+                <p class="result-title">Prediction Details</p>
+                <ul id="resultDetails" class="result-table">
+                    <li>Engine ID: --</li>
+                    <li>Latest Cycle: --</li>
+                    <li>Cycles Used: --</li>
+                    <li>Predicted RUL: --</li>
+                </ul>
+            </div>
+
+            <div id="statusMessage" class="message" aria-live="polite">
+                Enter an Engine ID and click Predict RUL.
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const engineIdInput = document.getElementById("engineId");
+        const predictBtn = document.getElementById("predictBtn");
+        const resultDetails = document.getElementById("resultDetails");
+        const statusMessage = document.getElementById("statusMessage");
+
+        function setStatus(message, type = "") {
+            statusMessage.textContent = message;
+            statusMessage.classList.remove("error", "success");
+            if (type) {
+                statusMessage.classList.add(type);
+            }
+        }
+
+        function formatPrediction(value) {
+            return Number(value).toFixed(2) + " cycles";
+        }
+
+        function isValidEngineId(value) {
+            const parsedValue = Number(value);
+            return Number.isInteger(parsedValue) && parsedValue > 0;
+        }
+
+        async function handlePredict() {
+            const inputValue = engineIdInput.value.trim();
+
+            if (!isValidEngineId(inputValue)) {
+                setStatus("Please enter a positive integer Engine ID.", "error");
+                return;
+            }
+
+            const engineId = Number(inputValue);
+            setStatus("Predicting...", "");
+            predictBtn.disabled = true;
+            resultDetails.innerHTML = "<li>Engine ID: --</li><li>Latest Cycle: --</li><li>Cycles Used: --</li><li>Predicted RUL: --</li>";
+
+            try {
+                const response = await fetch("/predict_engine_rul", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ engine_id: engineId })
+                });
+
+                if (!response.ok) {
+                    let message = "Prediction failed.";
+                    if (response.status === 404) {
+                        message = "Engine ID not found in test data.";
+                    } else if (response.status === 400 || response.status === 422) {
+                        message = "Invalid Engine ID or data format.";
+                    } else if (response.status === 503) {
+                        message = "Production model or data is unavailable.";
+                    }
+
+                    throw new Error(message);
+                }
+
+                const data = await response.json();
+                const predictedRul = Number(data.predicted_rul);
+
+                if (!Number.isFinite(predictedRul)) {
+                    throw new Error("Prediction failed.");
+                }
+
+                resultDetails.innerHTML = "<li>Engine ID: " + data.engine_id + "</li>" +
+                    "<li>Latest Cycle: " + data.latest_cycle + "</li>" +
+                    "<li>Cycles Used: " + data.window_size + "</li>" +
+                    "<li>Predicted RUL: " + formatPrediction(predictedRul) + "</li>";
+
+                setStatus("Prediction complete.", "success");
+            } catch (error) {
+                const message = error && error.message ? error.message : "Prediction failed.";
+                resultDetails.innerHTML = "<li>Engine ID: " + engineId + "</li><li>Latest Cycle: --</li><li>Cycles Used: --</li><li>Predicted RUL: --</li>";
+                setStatus(message, "error");
+            } finally {
+                predictBtn.disabled = false;
+            }
+        }
+
+        predictBtn.addEventListener("click", handlePredict);
+    </script>
+</body>
+</html>
