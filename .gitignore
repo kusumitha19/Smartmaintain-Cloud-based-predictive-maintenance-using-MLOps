@@ -28,3 +28,6 @@ final_model/preprocessing_lstm_window20.pkl
 
 # Windows metadata
 *:Zone.Identifier
+# Local MLflow environment and logs
+.venv-mlflow/
+mlflow-ui.log
