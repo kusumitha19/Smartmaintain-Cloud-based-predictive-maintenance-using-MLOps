@@ -169,11 +169,7 @@ The MLflow UI should be accessed privately through an SSH tunnel. Do not expose 
 
 The repository excludes local MLflow tracking data, raw NASA dataset files, environment files, generated artifacts, and local MLflow UI logs. Do not commit AWS private keys, tokens, passwords, or other secrets.
 
-## Current Status
 
-The core LSTM prediction service is deployed on AWS EC2. Live predictions have been verified, five model-comparison runs are visible in MLflow, and Prometheus has successfully scraped the API metrics. Grafana has also been accessed for monitoring.
-
-This repository documents the implemented academic project and its current deployment. Further production hardening, such as HTTPS, managed secrets, and automated recovery testing, may be required for a public production service.
 
 ## Author
 
